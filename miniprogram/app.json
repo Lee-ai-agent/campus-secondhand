@@ -1,0 +1,47 @@
+{
+  "pages": [
+    "pages/home/index",
+    "pages/list/index",
+    "pages/detail/index",
+    "pages/cart/index",
+    "pages/confirm/index",
+    "pages/orders/index",
+    "pages/order-detail/index",
+    "pages/review/index",
+    "pages/wanted/index",
+    "pages/wanted-publish/index",
+    "pages/wanted-detail/index",
+    "pages/messages/index",
+    "pages/chat/index",
+    "pages/profile/index",
+    "pages/favorites/index",
+    "pages/address/index",
+    "pages/seller/index",
+    "pages/seller-publish/index",
+    "pages/seller-posts/index",
+    "pages/seller-orders/index",
+    "pages/seller-ship/index",
+    "pages/seller-refund/index",
+    "pages/seller-shop/index",
+    "pages/login/index"
+  ],
+  "window": {
+    "navigationBarTitleText": "校园二手",
+    "navigationBarBackgroundColor": "#f7f3e8",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f7f3e8"
+  },
+  "tabBar": {
+    "color": "#7a7f86",
+    "selectedColor": "#0c5c42",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      { "pagePath": "pages/home/index", "text": "首页", "iconPath": "", "selectedIconPath": "" },
+      { "pagePath": "pages/wanted/index", "text": "求购", "iconPath": "", "selectedIconPath": "" },
+      { "pagePath": "pages/cart/index", "text": "购物车", "iconPath": "", "selectedIconPath": "" },
+      { "pagePath": "pages/messages/index", "text": "消息", "iconPath": "", "selectedIconPath": "" },
+      { "pagePath": "pages/profile/index", "text": "我的", "iconPath": "", "selectedIconPath": "" }
+    ]
+  }
+}
