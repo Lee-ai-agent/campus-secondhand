@@ -1,0 +1,20 @@
+<view class="chat-page" wx:if="{{messages}}">
+  <view class="chat-card">
+    <view class="message-avatar" style="width:72rpx;height:72rpx;font-size:28rpx">同</view>
+    <view style="flex:1">
+      <text style="font-weight:800;font-size:28rpx;display:block">{{contactName || '林同学'}}</text>
+      <text class="muted">商品咨询 · 在线</text>
+    </view>
+  </view>
+
+  <view class="chat-thread">
+    <text class="chat-time">2026-05-31 16:02</text>
+    <block wx:for="{{messages}}" wx:key="id">
+      <view class="chat-bubble {{item.senderId === myId ? 'outgoing' : 'incoming'}}">{{item.content}}</view>
+    </block>
+  </view>
+
+  <view class="chat-compose">
+    <input value="{{draft}}" bindinput="onDraft" placeholder="输入消息…" confirm-type="send" bindconfirm="sendMessage" />
+  </view>
+</view>

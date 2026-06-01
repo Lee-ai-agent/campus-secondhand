@@ -1,0 +1,33 @@
+<view class="page stack" style="padding-bottom:120rpx" wx:if="{{order}}">
+  <view class="order-card">
+    <view class="order-row">
+      <text style="font-weight:800;font-size:30rpx">{{order.orderNo}}</text>
+      <text class="badge {{order.status === 'PENDING_PAYMENT' ? 'warn' : order.status === 'COMPLETED' ? 'success' : 'blue'}}">{{statusText[order.status] || order.status}}</text>
+    </view>
+    <text class="muted">商品 #{{order.productId}} · 数量 {{order.quantity}}</text>
+    <text class="muted">地址：{{order.receiverName || '李同学'}} {{order.receiverPhone || '13800000000'}} · {{order.receiverAddress || '东区 3 栋 501'}}</text>
+
+    <view class="mini-timeline">
+      <view class="dot done">待付款</view>
+      <view class="dot {{order.status !== 'PENDING_PAYMENT' ? 'done' : ''}}">待发货</view>
+      <view class="dot {{order.status === 'PENDING_RECEIPT' || order.status === 'COMPLETED' ? 'done' : ''}}">待收货</view>
+      <view class="dot {{order.status === 'COMPLETED' ? 'done' : ''}}">已完成</view>
+    </view>
+
+    <view class="order-row" style="margin-top:16rpx">
+      <text class="price" style="font-size:32rpx">¥{{order.totalAmount}}</text>
+    </view>
+  </view>
+
+  <view class="bottom-action-bar">
+    <view wx:if="{{order.status === 'PENDING_PAYMENT'}}">
+      <button class="btn primary" bindtap="pay">去付款</button>
+    </view>
+    <view wx:if="{{order.status === 'PENDING_RECEIPT'}}">
+      <button class="btn primary" bindtap="receive">确认收货</button>
+    </view>
+    <view wx:if="{{order.status === 'COMPLETED'}}">
+      <button class="btn primary" bindtap="goReview">去评价</button>
+    </view>
+  </view>
+</view>

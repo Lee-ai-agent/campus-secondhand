@@ -1,0 +1,29 @@
+<view class="page stack">
+  <view class="status-tabs">
+    <view class="tab active">全部</view>
+    <view class="tab">待发货</view>
+    <view class="tab">待收货</view>
+    <view class="tab">售后</view>
+  </view>
+
+  <block wx:for="{{orders}}" wx:key="id">
+    <view class="order-card">
+      <view class="order-row">
+        <text style="font-weight:800;font-size:28rpx">{{item.orderNo}}</text>
+        <text class="badge {{item.status === 'AFTER_SALE' ? 'warn' : 'blue'}}">{{item.status}}</text>
+      </view>
+      <text class="muted">商品 #{{item.productId}} · 买方 {{item.buyerNickname || '同学'}} · 金额 ¥{{item.totalAmount}}</text>
+      <view class="order-actions">
+        <button wx:if="{{item.status === 'PENDING_SHIPMENT'}}" class="btn primary small" bindtap="goShip" data-id="{{item.id}}">发货</button>
+        <button wx:if="{{item.status === 'AFTER_SALE'}}" class="btn danger small" bindtap="goRefund" data-id="{{item.id}}">处理退款</button>
+        <button class="btn small" bindtap="viewDetail" data-id="{{item.id}}">查看</button>
+      </view>
+    </view>
+  </block>
+
+  <view wx:if="{{orders.length === 0}}" class="empty-state">
+    <view class="empty-icon">📦</view>
+    <text class="empty-title">暂无卖出订单</text>
+    <text class="empty-desc">发布商品后有人下单会出现在这里。</text>
+  </view>
+</view>

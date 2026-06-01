@@ -1,0 +1,25 @@
+<view class="page stack">
+  <block wx:for="{{favorites}}" wx:key="id">
+    <view class="product-card" bindtap="viewDetail" data-id="{{item.id}}">
+      <view class="product-img" data-kind="{{item.categoryName || '生活用品'}}">
+        <view class="product-mark">📦</view>
+        <text>{{item.categoryName || '商品'}}</text>
+      </view>
+      <view class="product-info">
+        <text class="title">{{item.title}}</text>
+        <view class="row">
+          <text class="price">¥{{item.price}}</text>
+          <text class="badge success">{{item.conditionLevel}}</text>
+        </view>
+        <text class="muted">{{item.pickupLocation || '校内'}}</text>
+      </view>
+    </view>
+  </block>
+
+  <view wx:if="{{favorites.length === 0}}" class="empty-state">
+    <view class="empty-icon">⭐</view>
+    <text class="empty-title">收藏为空</text>
+    <text class="empty-desc">点亮商品详情里的收藏图标，之后可以在这里快速找到。</text>
+    <button class="btn primary" bindtap="goHome">去首页看看</button>
+  </view>
+</view>

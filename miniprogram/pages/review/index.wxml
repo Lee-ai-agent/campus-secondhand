@@ -1,0 +1,18 @@
+<view class="page stack">
+  <view class="form-card">
+    <text style="font-weight:800;font-size:32rpx;display:block;margin-bottom:20rpx">{{productTitle}}</text>
+    <view class="field">
+      <text class="field-label">评分</text>
+      <view class="choice-grid">
+        <view class="choice-pill checked" bindtap="rate" data-rating="5">5 分</view>
+        <view class="choice-pill" bindtap="rate" data-rating="4">4 分</view>
+        <view class="choice-pill" bindtap="rate" data-rating="3">3 分</view>
+      </view>
+    </view>
+    <view class="field">
+      <text class="field-label">评价内容</text>
+      <textarea class="textarea" value="{{content}}" bindinput="onContent" placeholder="商品与描述一致，线下交接顺利。" />
+    </view>
+    <button class="btn primary" style="width:100%" bindtap="submit">提交评价</button>
+  </view>
+</view>

@@ -1,0 +1,65 @@
+<view class="page stack" style="padding-bottom:120rpx">
+  <view class="form-card">
+    <text style="font-weight:800;font-size:30rpx;display:block;margin-bottom:8rpx">发布闲置</text>
+    <text class="muted">审核通过后展示在商品流</text>
+
+    <view class="upload-cover" style="margin-top:20rpx">
+      <text style="font-size:48rpx">📷</text>
+      <text style="font-weight:800">添加商品图片</text>
+      <text class="muted">最多 9 张</text>
+    </view>
+
+    <view class="field" style="margin-top:20rpx">
+      <text class="field-label">标题</text>
+      <input class="input" value="{{title}}" bindinput="onTitle" placeholder="毕业季台灯" />
+    </view>
+
+    <view class="field">
+      <text class="field-label">分类</text>
+      <view class="filter-row">
+        <view class="filter-chip {{categoryId === 1 ? 'active' : ''}}" bindtap="setCategory" data-id="{{1}}">教材资料</view>
+        <view class="filter-chip {{categoryId === 2 ? 'active' : ''}}" bindtap="setCategory" data-id="{{2}}">数码电子</view>
+        <view class="filter-chip {{categoryId === 3 ? 'active' : ''}}" bindtap="setCategory" data-id="{{3}}">生活用品</view>
+        <view class="filter-chip {{categoryId === 4 ? 'active' : ''}}" bindtap="setCategory" data-id="{{4}}">运动户外</view>
+        <view class="filter-chip {{categoryId === 5 ? 'active' : ''}}" bindtap="setCategory" data-id="{{5}}">美妆服饰</view>
+        <view class="filter-chip {{categoryId === 6 ? 'active' : ''}}" bindtap="setCategory" data-id="{{6}}">票券卡券</view>
+      </view>
+    </view>
+
+    <view class="row">
+      <view class="field" style="flex:1">
+        <text class="field-label">价格</text>
+        <input class="input" type="digit" value="{{price}}" bindinput="onPrice" />
+      </view>
+      <view class="field" style="flex:1">
+        <text class="field-label">库存</text>
+        <input class="input" type="number" value="{{stock}}" bindinput="onStock" />
+      </view>
+    </view>
+
+    <view class="choice-field">
+      <text class="choice-legend">成色</text>
+      <view class="choice-grid">
+        <view class="choice-pill {{conditionLevel === '九成新' ? 'checked' : ''}}" bindtap="setCondition" data-value="九成新">九成新</view>
+        <view class="choice-pill {{conditionLevel === '八成新' ? 'checked' : ''}}" bindtap="setCondition" data-value="八成新">八成新</view>
+        <view class="choice-pill {{conditionLevel === '七成新' ? 'checked' : ''}}" bindtap="setCondition" data-value="七成新">七成新</view>
+        <view class="choice-pill {{conditionLevel === '其他' ? 'checked' : ''}}" bindtap="setCondition" data-value="其他">其他</view>
+      </view>
+    </view>
+
+    <view class="field">
+      <text class="field-label">描述</text>
+      <textarea class="textarea" value="{{description}}" bindinput="onDesc" placeholder="护眼台灯，亮度可调，毕业离校转让。" />
+    </view>
+
+    <view class="field">
+      <text class="field-label">取货地点</text>
+      <input class="input" value="{{pickupLocation}}" bindinput="onPickup" placeholder="西区操场" />
+    </view>
+  </view>
+
+  <view class="bottom-action-bar">
+    <button class="btn ghost" bindtap="saveDraft">存草稿</button>
+    <button class="btn primary" bindtap="submit">提交审核</button>
+  </view>
+</view>

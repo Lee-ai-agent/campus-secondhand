@@ -1,0 +1,17 @@
+<view class="page stack">
+  <view class="form-card">
+    <text style="font-weight:800;font-size:30rpx;display:block;margin-bottom:8rpx">退款处理</text>
+    <text class="muted">先沟通，再确认处理结果</text>
+    <text class="muted" style="margin-top:12rpx;display:block">退款原因：商品与描述不符。订单详情见上一页。</text>
+
+    <view class="field" style="margin-top:20rpx">
+      <text class="field-label">处理备注</text>
+      <textarea class="textarea" value="{{remark}}" bindinput="onRemark" placeholder="已与买方沟通，同意退款。" />
+    </view>
+
+    <view class="row" style="gap:20rpx">
+      <button class="btn primary" style="flex:1" bindtap="agreeRefund">同意退款</button>
+      <button class="btn danger" style="flex:1" bindtap="rejectRefund">拒绝退款</button>
+    </view>
+  </view>
+</view>

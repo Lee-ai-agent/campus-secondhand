@@ -1,0 +1,47 @@
+<view class="page stack" style="padding-bottom:120rpx">
+  <view class="form-card">
+    <text style="font-weight:800;font-size:30rpx;display:block;margin-bottom:16rpx">发布求购</text>
+    <text class="muted">填写清楚预算和成色，同学更容易判断是否联系你</text>
+
+    <view class="field" style="margin-top:20rpx">
+      <text class="field-label">名称</text>
+      <input class="input" placeholder="求购高等数学教材下册" value="{{title}}" bindinput="onTitle" />
+    </view>
+
+    <view class="range-field">
+      <text style="display:block;margin-bottom:12rpx;font-weight:700;color:var(--market-muted);font-size:24rpx">期望价格区间</text>
+      <view class="range-selects">
+        <view class="range-col">
+          <text class="field-label">最低金额</text>
+          <input class="input" type="digit" value="{{minPrice}}" bindinput="onMin" />
+        </view>
+        <view class="range-separator">至</view>
+        <view class="range-col">
+          <text class="field-label">最高金额</text>
+          <input class="input" type="digit" value="{{maxPrice}}" bindinput="onMax" />
+        </view>
+      </view>
+      <text class="range-result">自动生成区间：{{minPrice}}-{{maxPrice}} 元</text>
+    </view>
+
+    <view class="choice-field">
+      <text class="choice-legend">成色要求</text>
+      <view class="choice-grid">
+        <view class="choice-pill {{conditionLevel === '不限' ? 'checked' : ''}}" bindtap="setCondition" data-value="不限">不限</view>
+        <view class="choice-pill {{conditionLevel === '七成新以上' ? 'checked' : ''}}" bindtap="setCondition" data-value="七成新以上">七成新以上</view>
+        <view class="choice-pill {{conditionLevel === '八成新以上' ? 'checked' : ''}}" bindtap="setCondition" data-value="八成新以上">八成新以上</view>
+        <view class="choice-pill {{conditionLevel === '九成新以上' ? 'checked' : ''}}" bindtap="setCondition" data-value="九成新以上">九成新以上</view>
+      </view>
+    </view>
+
+    <view class="field">
+      <text class="field-label">描述</text>
+      <textarea class="textarea" value="{{description}}" bindinput="onDesc" placeholder="希望可在东区图书馆自提。" />
+    </view>
+  </view>
+
+  <view class="bottom-action-bar">
+    <button class="btn ghost" bindtap="cancel">取消</button>
+    <button class="btn primary" bindtap="submit">发布求购</button>
+  </view>
+</view>

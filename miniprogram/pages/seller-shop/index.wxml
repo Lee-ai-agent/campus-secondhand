@@ -1,0 +1,20 @@
+<view class="page stack">
+  <view class="form-card">
+    <text style="font-weight:800;font-size:30rpx;display:block;margin-bottom:8rpx">店铺资料</text>
+    <text class="muted">展示给联系你的同学</text>
+
+    <view class="field" style="margin-top:20rpx">
+      <text class="field-label">个人简介</text>
+      <textarea class="textarea" value="{{intro}}" bindinput="onIntro" placeholder="毕业季闲置转让，教材和宿舍用品为主。" />
+    </view>
+    <view class="field">
+      <text class="field-label">联系方式</text>
+      <input class="input" type="number" value="{{phone}}" bindinput="onPhone" placeholder="13800000000" />
+    </view>
+    <view class="field">
+      <text class="field-label">校园取货地点</text>
+      <input class="input" value="{{pickup}}" bindinput="onPickup" placeholder="东区图书馆 / 西区操场" />
+    </view>
+    <button class="btn primary" style="width:100%" bindtap="save">保存</button>
+  </view>
+</view>

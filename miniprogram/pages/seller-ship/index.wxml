@@ -1,0 +1,25 @@
+<view class="page stack">
+  <view class="form-card">
+    <text style="font-weight:800;font-size:30rpx;display:block;margin-bottom:8rpx">订单发货</text>
+    <text class="muted">校园内优先当面交易</text>
+
+    <view class="field" style="margin-top:20rpx">
+      <text class="field-label">发货方式</text>
+      <input class="input" value="当面交易/无需物流" />
+    </view>
+    <view class="field">
+      <text class="field-label">物流单号</text>
+      <input class="input" value="{{trackingNo}}" bindinput="onTracking" placeholder="当面交易可不填…" />
+    </view>
+    <view class="field">
+      <text class="field-label">取货说明</text>
+      <input class="input" value="{{pickupNote}}" bindinput="onPickupNote" placeholder="东区图书馆 18:30 自提" />
+    </view>
+    <view class="field">
+      <text class="field-label">备注</text>
+      <textarea class="textarea" value="{{remark}}" bindinput="onRemark" placeholder="请携带学生卡核验。" />
+    </view>
+    <button class="btn primary" style="width:100%" bindtap="submitShip">确认发货</button>
+    <text class="muted" style="display:block;text-align:center;margin-top:16rpx">当面交易时物流单号可为空，但取货说明必填。</text>
+  </view>
+</view>

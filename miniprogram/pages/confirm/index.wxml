@@ -1,0 +1,36 @@
+<view class="page stack" style="padding-bottom:120rpx">
+  <view class="address-card" bindtap="goAddress">
+    <view style="font-size:40rpx">📍</view>
+    <view style="flex:1">
+      <text style="display:block;font-weight:800;font-size:28rpx">李同学 13800000000</text>
+      <text class="muted">东区 3 栋 501</text>
+    </view>
+    <text style="color:var(--market-deep);font-weight:800">更换</text>
+  </view>
+
+  <view class="product-card">
+    <view class="product-img" data-kind="教材资料">
+      <view class="product-mark">📖</view>
+      <text>教材资料</text>
+    </view>
+    <view class="product-info">
+      <text class="title">{{productTitle}}</text>
+      <text class="muted">数量 1</text>
+    </view>
+  </view>
+
+  <view class="field">
+    <text class="field-label">订单备注</text>
+    <textarea class="textarea" placeholder="今晚 18:00 后方便自提" value="{{remark}}" bindinput="onRemark" />
+  </view>
+
+  <text class="muted" style="text-align:center">提交前会校验库存、商品状态和默认地址。</text>
+
+  <view class="bottom-action-bar">
+    <view>
+      <text class="muted">应付</text>
+      <text class="price">¥{{totalPrice}}</text>
+    </view>
+    <button class="btn primary" bindtap="submitOrder">提交订单</button>
+  </view>
+</view>

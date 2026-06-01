@@ -1,0 +1,34 @@
+<view class="page stack">
+  <view class="status-tabs">
+    <view class="tab active">全部</view>
+    <view class="tab">待审核</view>
+    <view class="tab">已上架</view>
+    <view class="tab">驳回</view>
+  </view>
+
+  <block wx:for="{{posts}}" wx:key="id">
+    <view class="post-card">
+      <view class="product-img" data-kind="生活用品" style="width:140rpx;height:140rpx">
+        <view class="product-mark">📦</view>
+      </view>
+      <view style="flex:1;min-width:0">
+        <view class="row">
+          <text style="font-weight:800;font-size:28rpx">{{item.title}}</text>
+          <text class="badge {{item.audit === '待审核' ? 'warn' : 'success'}}">{{item.audit || '审核通过'}}</text>
+        </view>
+        <text class="muted">价格 ¥{{item.price}} · 库存 {{item.stock}}</text>
+        <text class="muted">{{item.audit === '待审核' ? '图片不清晰，可编辑后重新提交。' : '审核通过，可被其他用户搜索购买。'}}</text>
+        <view class="order-actions">
+          <button class="btn primary small" bindtap="editPost" data-id="{{item.id}}">编辑</button>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <view wx:if="{{posts.length === 0}}" class="empty-state">
+    <view class="empty-icon">📋</view>
+    <text class="empty-title">暂无发布</text>
+    <text class="empty-desc">去发布闲置商品吧。</text>
+    <button class="btn primary" bindtap="goPublish">发布闲置</button>
+  </view>
+</view>
