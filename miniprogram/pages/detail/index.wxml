@@ -1,0 +1,45 @@
+<view class="page stack" wx:if="{{product}}" style="padding-bottom:120rpx">
+  <!-- 大图区 -->
+  <view class="product-img large-img" data-kind="{{product.categoryName}}" style="width:100%;height:380rpx">
+    <view class="product-mark" style="width:100rpx;height:100rpx;font-size:40rpx">{{product.categoryName === '教材资料' ? '📖' : product.categoryName === '数码电子' ? '📱' : product.categoryName === '生活用品' ? '🏠' : '📦'}}</view>
+    <text>{{product.categoryName}}</text>
+  </view>
+
+  <!-- 商品信息 -->
+  <view class="screen-card stack">
+    <view class="row">
+      <text class="name" style="font-size:34rpx">{{product.title}}</text>
+      <view wx:if="{{!canBuy}}" class="badge danger">{{product.status === 'STOCK_OUT' ? '库存不足' : '已下架'}}</view>
+    </view>
+    <view class="row">
+      <text class="price">¥{{product.price}}</text>
+      <view class="badge success">{{product.conditionLevel}}</view>
+    </view>
+    <text class="muted">库存 {{product.stock}} · {{product.pickupLocation}} · 发布者 {{product.sellerNickname || '同学'}}</text>
+    <text>{{product.description}}</text>
+    <view class="link-row" bindtap="goWanted">
+      <text>想要类似商品</text>
+      <text style="font-weight:900">去求购 →</text>
+    </view>
+  </view>
+
+  <!-- 卖家卡片 -->
+  <view class="seller-card">
+    <view class="profile-avatar" style="width:80rpx;height:80rpx;font-size:30rpx">{{product.sellerNickname ? product.sellerNickname[0] : '同'}}</view>
+    <view style="flex:1">
+      <text style="font-weight:800;font-size:30rpx">{{product.sellerNickname || '同学'}}</text>
+      <view class="muted">校内当面交易 · {{product.pickupLocation}}</view>
+    </view>
+    <view class="badge success">学生认证</view>
+  </view>
+
+  <!-- 底部操作栏 -->
+  <view class="bottom-action-bar">
+    <button class="btn small ghost" style="flex-shrink:0;min-width:80rpx" bindtap="toggleFavorite">
+      {{favorite ? '❤️' : '🤍'}}
+    </button>
+    <button class="btn ghost" style="flex:1" bindtap="sendMessage">聊一聊</button>
+    <button class="btn" style="flex:1" bindtap="addCart">加购物车</button>
+    <button class="btn primary" style="flex:1" bindtap="buyNow" disabled="{{!canBuy}}">立即购买</button>
+  </view>
+</view>

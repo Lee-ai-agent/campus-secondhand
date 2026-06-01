@@ -1,0 +1,80 @@
+<view class="page stack">
+  <!-- 搜索栏 -->
+  <view class="soft-search">
+    <view class="search-icon">🔍</view>
+    <input placeholder="搜索教材、台灯、耳机…" value="{{keyword}}" bindinput="onKeyword" confirm-type="search" bindconfirm="loadProducts" />
+    <button class="search-action" bindtap="loadProducts">搜索</button>
+  </view>
+
+  <!-- 市场 Banner -->
+  <view class="market-hero">
+    <view class="banner-kicker">校园市集</view>
+    <h3>毕业季闲置市集</h3>
+    <p>教材、台灯、耳机和宿舍好物都在同一个小程序里买卖。</p>
+    <view class="hero-chips">
+      <view class="chip">本周新增 38 件</view>
+      <view class="chip">线下自提</view>
+      <view class="chip">学生交易</view>
+    </view>
+    <button class="btn primary" style="position:absolute;right:20rpx;top:20rpx;color:#112219;background:#ffd45a;box-shadow:0 12rpx 22rpx rgba(158,107,0,0.22);" bindtap="goSeller">卖闲置</button>
+  </view>
+
+  <!-- 分类入口 -->
+  <view class="category-grid">
+    <block wx:for="{{categories}}" wx:key="id">
+      <view class="category-item" bindtap="chooseCategory" data-id="{{item.id}}">
+        <view class="cat-icon">{{item.icon || '📦'}}</view>
+        <text>{{item.name}}</text>
+      </view>
+    </block>
+    <view class="category-item" bindtap="goWanted">
+      <view class="cat-icon">🔍</view>
+      <text>求购专区</text>
+    </view>
+    <view class="category-item" bindtap="goAllLatest">
+      <view class="cat-icon">🆕</view>
+      <text>最新上架</text>
+    </view>
+  </view>
+
+  <!-- 推荐标题 -->
+  <view class="section-title">
+    <view>
+      <h4>同学正在转</h4>
+      <text class="muted">按距离、价格和发布时间综合推荐</text>
+    </view>
+    <button class="btn small" bindtap="goAll">查看全部</button>
+  </view>
+
+  <!-- 商品流 -->
+  <block wx:for="{{products}}" wx:key="id">
+    <view class="product-card" bindtap="goDetail" data-id="{{item.id}}">
+      <view class="product-img" data-kind="{{item.categoryName}}">
+        <view class="product-mark">{{item.categoryName === '教材资料' ? '📖' : item.categoryName === '数码电子' ? '📱' : item.categoryName === '生活用品' ? '🏠' : '📦'}}</view>
+        <text>{{item.categoryName}}</text>
+      </view>
+      <view class="product-info">
+        <view class="row">
+          <text class="title">{{item.title}}</text>
+          <view wx:if="{{item.status === 'STOCK_OUT'}}" class="badge danger">库存不足</view>
+        </view>
+        <view class="row">
+          <text class="price">¥{{item.price}}</text>
+          <view class="badge success">{{item.conditionLevel}}</view>
+        </view>
+        <text class="muted">{{item.pickupLocation}} · 库存 {{item.stock}}</text>
+        <view class="seller-line">
+          <view class="seller-tag name">{{item.sellerNickname}}</view>
+          <view class="seller-tag cat">{{item.categoryName}}</view>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <view wx:if="{{products.length === 0}}" class="empty-state">
+    <view class="empty-icon">🔍</view>
+    <text class="empty-title">暂无商品</text>
+    <text class="empty-desc">换个分类看看，或发布求购让同学主动联系你。</text>
+    <button class="btn primary" bindtap="goWanted">去求购</button>
+  </view>
+</view>
