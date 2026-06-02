@@ -27,13 +27,13 @@
   ],
   "window": {
     "navigationBarTitleText": "校园二手",
-    "navigationBarBackgroundColor": "#f7f3e8",
+    "navigationBarBackgroundColor": "#F5F5F7",
     "navigationBarTextStyle": "black",
-    "backgroundColor": "#f7f3e8"
+    "backgroundColor": "#F5F5F7"
   },
   "tabBar": {
-    "color": "#7a7f86",
-    "selectedColor": "#0c5c42",
+    "color": "#86868B",
+    "selectedColor": "#0071E3",
     "backgroundColor": "#ffffff",
     "borderStyle": "white",
     "list": [
