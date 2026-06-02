@@ -1,7 +1,7 @@
 <view class="page stack" style="padding-bottom:120rpx" wx:if="{{order}}">
   <view class="order-card">
     <view class="order-row">
-      <text style="font-weight:800;font-size:30rpx">{{order.orderNo}}</text>
+      <text style="font-weight:700;font-size:30rpx">{{order.orderNo}}</text>
       <text class="badge {{order.status === 'PENDING_PAYMENT' ? 'warn' : order.status === 'COMPLETED' ? 'success' : 'blue'}}">{{statusText[order.status] || order.status}}</text>
     </view>
     <text class="muted">商品 #{{order.productId}} · 数量 {{order.quantity}}</text>

@@ -1,7 +1,7 @@
 <view class="page" style="padding:0">
   <view class="section-title" style="padding:24rpx 24rpx 0">
     <view>
-      <text style="font-size:32rpx;font-weight:800">消息</text>
+      <text style="font-size:32rpx;font-weight:700">消息</text>
       <text class="muted">长按会话可置顶或删除</text>
     </view>
   </view>
@@ -19,7 +19,7 @@
     </view>
   </block>
   <view wx:if="{{messages.length === 0}}" class="empty-state" style="margin:24rpx">
-    <view class="empty-icon">💬</view>
+    <view class="empty-icon">M</view>
     <text class="empty-title">暂无咨询消息</text>
     <text class="empty-desc">商品详情页里联系卖家后可在这里继续对话。</text>
   </view>

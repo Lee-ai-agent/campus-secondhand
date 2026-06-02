@@ -1,7 +1,6 @@
 <view class="page stack">
-  <!-- 搜索栏 + 筛选条 -->
   <view class="soft-search">
-    <view class="search-icon">🔍</view>
+    <view class="search-icon">⌕</view>
     <input placeholder="搜索当前分类" value="{{keyword}}" bindinput="onKeyword" confirm-type="search" bindconfirm="loadProducts" />
     <button class="search-action" bindtap="loadProducts">筛选</button>
   </view>
@@ -26,14 +25,14 @@
   </view>
 
   <view class="row" style="margin-top:10rpx">
-    <text style="font-weight:800;font-size:28rpx">{{currentCategory === '全部分类' ? '全部好物' : currentCategory}}</text>
+    <text style="font-weight:700;font-size:28rpx">{{currentCategory === '全部分类' ? '全部好物' : currentCategory}}</text>
     <text class="muted">{{products.length}} 件</text>
   </view>
 
   <block wx:for="{{products}}" wx:key="id">
     <view class="product-card" bindtap="goDetail" data-id="{{item.id}}">
       <view class="product-img" data-kind="{{item.categoryName}}">
-        <view class="product-mark">📦</view>
+        <view class="product-mark">#</view>
         <text>{{item.categoryName}}</text>
       </view>
       <view class="product-info">
@@ -55,7 +54,7 @@
   </block>
 
   <view wx:if="{{products.length === 0}}" class="empty-state">
-    <view class="empty-icon">🔍</view>
+    <view class="empty-icon">⌕</view>
     <text class="empty-title">没有找到相关商品</text>
     <text class="empty-desc">可以换个筛选条件，或发布求购让同学主动联系你。</text>
     <button class="btn primary" bindtap="goWanted">发布求购</button>

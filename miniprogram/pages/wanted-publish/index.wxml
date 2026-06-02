@@ -1,6 +1,6 @@
 <view class="page stack" style="padding-bottom:120rpx">
   <view class="form-card">
-    <text style="font-weight:800;font-size:30rpx;display:block;margin-bottom:16rpx">发布求购</text>
+    <text style="font-weight:700;font-size:30rpx;display:block;margin-bottom:16rpx">发布求购</text>
     <text class="muted">填写清楚预算和成色，同学更容易判断是否联系你</text>
 
     <view class="field" style="margin-top:20rpx">
@@ -9,7 +9,7 @@
     </view>
 
     <view class="range-field">
-      <text style="display:block;margin-bottom:12rpx;font-weight:700;color:var(--market-muted);font-size:24rpx">期望价格区间</text>
+      <text style="display:block;margin-bottom:12rpx;font-weight:600;color:var(--text-muted);font-size:24rpx">期望价格区间</text>
       <view class="range-selects">
         <view class="range-col">
           <text class="field-label">最低金额</text>

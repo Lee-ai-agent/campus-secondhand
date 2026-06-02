@@ -1,5 +1,5 @@
 <view class="page stack">
-  <view class="banner" style="background:linear-gradient(135deg,#0c5c42,#18a66b)">
+  <view class="banner">
     <text class="banner-kicker">个人摊位</text>
     <h3>我的校园摊位</h3>
     <p>发布闲置、看审核、处理卖出订单都在这里。</p>
@@ -22,19 +22,19 @@
 
   <view class="grid-2">
     <view class="category-item" bindtap="goPublish">
-      <view class="cat-icon">📦</view>
+      <view class="cat-icon">P</view>
       <text>发布闲置</text>
     </view>
     <view class="category-item" bindtap="goPosts">
-      <view class="cat-icon">📋</view>
+      <view class="cat-icon">L</view>
       <text>我的发布</text>
     </view>
     <view class="category-item" bindtap="goOrders">
-      <view class="cat-icon">📦</view>
+      <view class="cat-icon">O</view>
       <text>卖出订单</text>
     </view>
     <view class="category-item" bindtap="goShop">
-      <view class="cat-icon">🏪</view>
+      <view class="cat-icon">S</view>
       <text>店铺资料</text>
     </view>
   </view>

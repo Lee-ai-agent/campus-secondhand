@@ -1,7 +1,7 @@
 <view class="page stack" style="padding-bottom:120rpx" wx:if="{{wanted}}">
   <view class="screen-card stack">
     <view class="row">
-      <text style="font-weight:800;font-size:32rpx">{{wanted.title}}</text>
+      <text style="font-weight:700;font-size:32rpx">{{wanted.title}}</text>
       <text class="badge">{{wanted.status || '展示中'}}</text>
     </view>
     <text class="muted">发布人 {{wanted.userNickname || '同学'}} · 预算 ¥{{wanted.minPrice}}-{{wanted.maxPrice}} · {{wanted.conditionLevel}}</text>

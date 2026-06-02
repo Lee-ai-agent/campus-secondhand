@@ -1,16 +1,16 @@
 <view class="page stack" style="padding-bottom:120rpx">
   <view class="address-card" bindtap="goAddress">
-    <view style="font-size:40rpx">📍</view>
+    <view style="font-size:40rpx">⌖</view>
     <view style="flex:1">
-      <text style="display:block;font-weight:800;font-size:28rpx">李同学 13800000000</text>
+      <text style="display:block;font-weight:700;font-size:28rpx">李同学 13800000000</text>
       <text class="muted">东区 3 栋 501</text>
     </view>
-    <text style="color:var(--market-deep);font-weight:800">更换</text>
+    <text style="color:var(--primary);font-weight:700">更换</text>
   </view>
 
   <view class="product-card">
     <view class="product-img" data-kind="教材资料">
-      <view class="product-mark">📖</view>
+      <view class="product-mark">教</view>
       <text>教材资料</text>
     </view>
     <view class="product-info">
