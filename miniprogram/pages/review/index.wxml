@@ -1,6 +1,6 @@
 <view class="page stack">
   <view class="form-card">
-    <text style="font-weight:800;font-size:32rpx;display:block;margin-bottom:20rpx">{{productTitle}}</text>
+    <text style="font-weight:700;font-size:32rpx;display:block;margin-bottom:20rpx">{{productTitle}}</text>
     <view class="field">
       <text class="field-label">评分</text>
       <view class="choice-grid">

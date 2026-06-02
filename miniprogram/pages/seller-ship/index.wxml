@@ -1,6 +1,6 @@
 <view class="page stack">
   <view class="form-card">
-    <text style="font-weight:800;font-size:30rpx;display:block;margin-bottom:8rpx">订单发货</text>
+    <text style="font-weight:700;font-size:30rpx;display:block;margin-bottom:8rpx">订单发货</text>
     <text class="muted">校园内优先当面交易</text>
 
     <view class="field" style="margin-top:20rpx">
