@@ -1,12 +1,10 @@
 <view class="page stack">
-  <!-- 求购 Banner -->
   <view class="wanted-hero">
-    <text class="badge" style="margin-bottom:16rpx">求购专区</text>
-    <text style="display:block;font-size:34rpx;font-weight:900">同学们正在找</text>
+    <text class="badge blue" style="margin-bottom:16rpx">求购专区</text>
+    <text style="display:block;font-size:34rpx;font-weight:700;letter-spacing:-0.3rpx">同学们正在找</text>
     <text class="muted">看到你有的物品，直接联系对方。</text>
   </view>
 
-  <!-- 筛选条 -->
   <view class="filter-row">
     <view class="filter-chip active">
       <text class="chip-label">排序</text>
@@ -22,11 +20,10 @@
     </view>
   </view>
 
-  <!-- 求购列表 -->
   <block wx:for="{{posts}}" wx:key="id">
     <view class="wanted-card" bindtap="viewDetail" data-id="{{item.id}}">
-      <text class="badge">{{item.status || '展示中'}}</text>
-      <text style="display:block;margin-top:14rpx;font-size:30rpx;font-weight:900">{{item.title}}</text>
+      <text class="badge blue">{{item.status || '展示中'}}</text>
+      <text style="display:block;margin-top:14rpx;font-size:30rpx;font-weight:700">{{item.title}}</text>
       <text class="muted">{{item.description}}</text>
       <view class="wanted-meta-row">
         <text class="wanted-meta-tag">{{item.userNickname || '同学'}}</text>
@@ -37,15 +34,14 @@
   </block>
 
   <view wx:if="{{posts.length === 0}}" class="empty-state">
-    <view class="empty-icon">🔍</view>
+    <view class="empty-icon">⌕</view>
     <text class="empty-title">暂无求购</text>
     <text class="empty-desc">还没有同学发布求购，可以先发起一个需求。</text>
     <button class="btn primary" bindtap="goPublish">发起求购</button>
   </view>
 
-  <!-- 悬浮发布按钮 -->
   <view class="floating-action" bindtap="goPublish">
-    <text>+</text>
+    <text style="font-size:32rpx;margin-right:4rpx">+</text>
     <text>发求购</text>
   </view>
 </view>

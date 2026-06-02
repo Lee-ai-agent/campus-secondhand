@@ -16,6 +16,6 @@
     </view>
     <button class="btn primary" style="width:100%" bindtap="login">登录</button>
     <button class="btn ghost" style="width:100%" bindtap="register">注册</button>
-    <button class="btn" style="width:100%; background:transparent; border:0; color:var(--market-muted)" bindtap="guestBrowse">游客浏览</button>
+    <button class="btn" style="width:100%; background:transparent; border:0; color:var(--text-muted)" bindtap="guestBrowse">游客浏览</button>
   </view>
 </view>

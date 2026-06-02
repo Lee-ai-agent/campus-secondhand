@@ -1,9 +1,8 @@
 <view class="page stack">
-  <!-- 个人中心头部 -->
   <view class="profile-hero">
     <view class="profile-avatar">{{user ? user.nickname[0] : '游'}}</view>
     <view style="flex:1">
-      <text style="display:block;font-size:34rpx;font-weight:900">{{user ? user.nickname : '游客'}}</text>
+      <text style="display:block;font-size:34rpx;font-weight:800">{{user ? user.nickname : '游客'}}</text>
       <text style="font-size:24rpx;opacity:0.85">{{user ? user.role : '登录后可下单、发布和查看订单'}}</text>
     </view>
     <text wx:if="{{user}}" class="badge" style="background:rgba(255,255,255,0.25);color:#fff">已登录</text>
@@ -14,7 +13,6 @@
   </view>
 
   <view wx:if="{{user}}">
-    <!-- 统计 -->
     <view class="profile-stats">
       <view class="stat-item">
         <text class="stat-num">3</text><text class="stat-label">买入</text>
@@ -30,49 +28,46 @@
       </view>
     </view>
 
-    <!-- 交易 -->
     <view class="profile-section" style="margin-top:20rpx">
-      <text style="font-weight:800;font-size:28rpx;display:block;margin-bottom:16rpx">交易</text>
+      <text style="font-weight:700;font-size:28rpx;display:block;margin-bottom:16rpx">交易</text>
       <view class="grid-2">
-        <view class="category-item" bindtap="orders">
-          <view class="cat-icon">📦</view>
+        <view class="category-item" bindtap="goOrders">
+          <view class="cat-icon">B</view>
           <text>买入订单</text>
         </view>
         <view class="category-item" bindtap="goWanted">
-          <view class="cat-icon">🔍</view>
+          <view class="cat-icon">⌕</view>
           <text>我的求购</text>
         </view>
       </view>
     </view>
 
-    <!-- 我的摊位 -->
     <view class="profile-section" style="margin-top:20rpx">
       <view class="row" style="margin-bottom:16rpx">
-        <text style="font-weight:800;font-size:28rpx">我的校园摊位</text>
+        <text style="font-weight:700;font-size:28rpx">我的校园摊位</text>
         <button class="btn primary small" bindtap="goSeller">卖闲置</button>
       </view>
       <view class="grid-2">
         <view class="category-item" bindtap="goPosts">
-          <view class="cat-icon">📋</view>
+          <view class="cat-icon">P</view>
           <text>我的发布</text>
         </view>
         <view class="category-item" bindtap="goSellerOrders">
-          <view class="cat-icon">📦</view>
+          <view class="cat-icon">O</view>
           <text>卖出订单</text>
         </view>
       </view>
     </view>
 
-    <!-- 工具 -->
     <view class="profile-section" style="margin-top:20rpx">
-      <text style="font-weight:800;font-size:28rpx;display:block;margin-bottom:16rpx">工具</text>
+      <text style="font-weight:700;font-size:28rpx;display:block;margin-bottom:16rpx">工具</text>
       <view class="grid-2">
         <view class="category-item" bindtap="goFavorites">
-          <view class="cat-icon">⭐</view>
+          <view class="cat-icon">★</view>
           <text>收藏</text>
         </view>
         <view class="category-item" bindtap="goAddress">
-          <view class="cat-icon">📍</view>
+          <view class="cat-icon">⌖</view>
           <text>地址</text>
         </view>
       </view>

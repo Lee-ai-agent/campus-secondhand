@@ -1,8 +1,8 @@
 <view class="page stack" style="padding-bottom:120rpx">
   <block wx:for="{{items}}" wx:key="id">
-    <view class="product-card cart-item">
+    <view class="product-card">
       <view class="product-img" data-kind="生活用品">
-        <view class="product-mark">📦</view>
+        <view class="product-mark">#</view>
         <text>商品</text>
       </view>
       <view class="product-info">
@@ -16,7 +16,7 @@
         </view>
         <view class="row">
           <view class="stepper">
-            <view class="step-btn" bindtap="decrease" data-id="{{item.id}}">−</view>
+            <view class="step-btn" bindtap="decrease" data-id="{{item.id}}">-</view>
             <text class="step-val">{{item.quantity}}</text>
             <view class="step-btn" bindtap="increase" data-id="{{item.id}}">+</view>
           </view>
@@ -26,7 +26,7 @@
     </view>
   </block>
   <view wx:if="{{items.length === 0}}" class="empty-state">
-    <view class="empty-icon">🛒</view>
+    <view class="empty-icon">C</view>
     <text class="empty-title">购物车为空</text>
     <text class="empty-desc">看到喜欢的校园好物，可以先加入购物车再一起结算。</text>
     <button class="btn primary" bindtap="goHome">去逛逛</button>
