@@ -38,13 +38,13 @@
       <view class="product-info">
         <view class="row">
           <text class="title">{{item.title}}</text>
-          <text wx:if="{{item.status === 'STOCK_OUT'}}" class="badge danger">库存不足</text>
+          <text wx:if="{{item.status === 'sold'}}" class="badge danger">已卖出</text>
         </view>
         <view class="row">
           <text class="price">¥{{item.price}}</text>
           <text class="badge success">{{item.conditionLevel}}</text>
         </view>
-        <text class="muted">{{item.pickupLocation}} · 库存 {{item.stock}}</text>
+        <text class="muted">{{item.pickupLocation}}</text>
         <view class="seller-line">
           <view class="seller-tag name">{{item.sellerNickname || '同学'}}</view>
           <view class="seller-tag cat">{{item.categoryName}}</view>

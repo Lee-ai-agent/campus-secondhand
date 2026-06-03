@@ -2,16 +2,16 @@
   <view class="order-card">
     <view class="order-row">
       <text style="font-weight:700;font-size:30rpx">{{order.orderNo}}</text>
-      <text class="badge {{order.status === 'PENDING_PAYMENT' ? 'warn' : order.status === 'COMPLETED' ? 'success' : 'blue'}}">{{statusText[order.status] || order.status}}</text>
+      <text class="badge {{order.status === 'pending_payment' ? 'warn' : order.status === 'completed' ? 'success' : 'blue'}}">{{statusText[order.status] || order.status}}</text>
     </view>
     <text class="muted">商品 #{{order.productId}} · 数量 {{order.quantity}}</text>
     <text class="muted">地址：{{order.receiverName || '李同学'}} {{order.receiverPhone || '13800000000'}} · {{order.receiverAddress || '东区 3 栋 501'}}</text>
 
     <view class="mini-timeline">
       <view class="dot done">待付款</view>
-      <view class="dot {{order.status !== 'PENDING_PAYMENT' ? 'done' : ''}}">待发货</view>
-      <view class="dot {{order.status === 'PENDING_RECEIPT' || order.status === 'COMPLETED' ? 'done' : ''}}">待收货</view>
-      <view class="dot {{order.status === 'COMPLETED' ? 'done' : ''}}">已完成</view>
+      <view class="dot {{order.status !== 'pending_payment' ? 'done' : ''}}">待发货</view>
+      <view class="dot {{order.status === 'pending_receipt' || order.status === 'completed' ? 'done' : ''}}">待收货</view>
+      <view class="dot {{order.status === 'completed' ? 'done' : ''}}">已完成</view>
     </view>
 
     <view class="order-row" style="margin-top:16rpx">
@@ -20,13 +20,13 @@
   </view>
 
   <view class="bottom-action-bar">
-    <view wx:if="{{order.status === 'PENDING_PAYMENT'}}">
+    <view wx:if="{{order.status === 'pending_payment'}}">
       <button class="btn primary" bindtap="pay">去付款</button>
     </view>
-    <view wx:if="{{order.status === 'PENDING_RECEIPT'}}">
+    <view wx:if="{{order.status === 'pending_receipt'}}">
       <button class="btn primary" bindtap="receive">确认收货</button>
     </view>
-    <view wx:if="{{order.status === 'COMPLETED'}}">
+    <view wx:if="{{order.status === 'completed'}}">
       <button class="btn primary" bindtap="goReview">去评价</button>
     </view>
   </view>

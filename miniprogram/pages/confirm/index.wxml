@@ -2,8 +2,8 @@
   <view class="address-card" bindtap="goAddress">
     <view style="font-size:40rpx">⌖</view>
     <view style="flex:1">
-      <text style="display:block;font-weight:700;font-size:28rpx">李同学 13800000000</text>
-      <text class="muted">东区 3 栋 501</text>
+      <text style="display:block;font-weight:700;font-size:28rpx">{{receiverName}} {{receiverPhone}}</text>
+      <text class="muted">{{receiverAddress}}</text>
     </view>
     <text style="color:var(--primary);font-weight:700">更换</text>
   </view>
@@ -16,6 +16,7 @@
     <view class="product-info">
       <text class="title">{{productTitle}}</text>
       <text class="muted">数量 1</text>
+      <text class="muted">面交点 {{pickupLocation}}</text>
     </view>
   </view>
 
@@ -24,7 +25,10 @@
     <textarea class="textarea" placeholder="今晚 18:00 后方便自提" value="{{remark}}" bindinput="onRemark" />
   </view>
 
-  <text class="muted" style="text-align:center">提交前会校验库存、商品状态和默认地址。</text>
+  <view class="screen-card">
+    <text class="section-label">模拟支付说明</text>
+    <text class="muted">提交后生成待付款订单，可在订单详情或聊天会话内完成模拟付款。</text>
+  </view>
 
   <view class="bottom-action-bar">
     <view>

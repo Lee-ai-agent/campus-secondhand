@@ -1,41 +1,39 @@
 <view class="page stack">
   <view class="banner">
-    <text class="banner-kicker">个人摊位</text>
-    <h3>我的校园摊位</h3>
-    <p>发布闲置、看审核、处理卖出订单都在这里。</p>
-  </view>
-
-  <view class="profile-stats">
-    <view class="stat-item">
-      <text class="stat-num">12</text><text class="stat-label">发布</text>
-    </view>
-    <view class="stat-item">
-      <text class="stat-num">2</text><text class="stat-label">待发货</text>
-    </view>
-    <view class="stat-item">
-      <text class="stat-num">3</text><text class="stat-label">咨询</text>
-    </view>
-    <view class="stat-item">
-      <text class="stat-num">8</text><text class="stat-label">成交</text>
-    </view>
+    <text class="banner-kicker">发布</text>
+    <h3>今天想发布什么？</h3>
+    <p>选择发布闲置或发求购，具体表单会在下一步填写。</p>
   </view>
 
   <view class="grid-2">
-    <view class="category-item" bindtap="goPublish">
-      <view class="cat-icon">P</view>
+    <view class="category-item publish-entry sell-entry" bindtap="goPublish">
+      <view class="cat-icon">＋</view>
       <text>发布闲置</text>
+      <text class="muted">出售教材、数码、生活用品</text>
     </view>
-    <view class="category-item" bindtap="goPosts">
-      <view class="cat-icon">L</view>
-      <text>我的发布</text>
+    <view class="category-item publish-entry wanted-entry" bindtap="goWantedPublish">
+      <view class="cat-icon">⌕</view>
+      <text>发求购</text>
+      <text class="muted">让同学主动联系你</text>
     </view>
+  </view>
+
+  <view class="profile-section">
+    <text class="section-label">最近草稿</text>
+    <text class="muted">暂无草稿</text>
+  </view>
+
+  <view class="profile-section">
+    <text class="section-label">发布管理</text>
+    <view class="grid-2">
+      <view class="category-item" bindtap="goPosts">
+        <view class="cat-icon">L</view>
+        <text>我的发布</text>
+      </view>
     <view class="category-item" bindtap="goOrders">
       <view class="cat-icon">O</view>
       <text>卖出订单</text>
     </view>
-    <view class="category-item" bindtap="goShop">
-      <view class="cat-icon">S</view>
-      <text>店铺资料</text>
     </view>
   </view>
 </view>

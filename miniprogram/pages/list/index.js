@@ -26,7 +26,7 @@ Page({
       data: {
         keyword: this.data.keyword,
         categoryId: this.data.categoryId || undefined,
-        status: 'ON_SALE'
+        status: 'approved'
       }
     });
     const products = (data.items || []).map(p => ({

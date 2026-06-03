@@ -1,37 +1,49 @@
-<view class="page stack">
+<view class="page stack page-enter profile-page">
+  <view class="mini-top">
+    <text class="brand-title">个人中心</text>
+  </view>
+
   <view class="profile-hero">
-    <view class="profile-avatar">{{user ? user.nickname[0] : '游'}}</view>
-    <view style="flex:1">
-      <text style="display:block;font-size:34rpx;font-weight:800">{{user ? user.nickname : '游客'}}</text>
-      <text style="font-size:24rpx;opacity:0.85">{{user ? user.role : '登录后可下单、发布和查看订单'}}</text>
+    <view class="campus-line"></view>
+    <view class="awning">
+      <view></view><view></view><view></view><view></view>
     </view>
-    <text wx:if="{{user}}" class="badge" style="background:rgba(255,255,255,0.25);color:#fff">已登录</text>
+    <view class="profile-avatar">{{user ? user.nickname[0] : '游'}}</view>
+    <view class="action-grow">
+      <text class="hero-title">{{user ? user.nickname : '游客'}}</text>
+      <text class="muted">{{user ? user.role : '登录后可下单、发布和查看订单'}}</text>
+    </view>
+    <text wx:if="{{user}}" class="badge">已登录</text>
+    <view class="stall-sign">
+      <text>校园</text>
+      <text>二手</text>
+    </view>
   </view>
 
   <view wx:if="{{!user}}">
-    <button class="btn primary" style="width:100%" bindtap="login">登录</button>
+    <button class="btn primary login-action" bindtap="login">登录</button>
   </view>
 
   <view wx:if="{{user}}">
     <view class="profile-stats">
       <view class="stat-item">
-        <text class="stat-num">3</text><text class="stat-label">买入</text>
+        <view class="stat-icon">▢</view><text class="stat-num">-</text><text class="stat-label">买入</text>
       </view>
       <view class="stat-item">
-        <text class="stat-num">12</text><text class="stat-label">发布</text>
+        <view class="stat-icon">✈</view><text class="stat-num">-</text><text class="stat-label">发布</text>
       </view>
       <view class="stat-item">
-        <text class="stat-num">2</text><text class="stat-label">卖出</text>
+        <view class="stat-icon">￥</view><text class="stat-num">-</text><text class="stat-label">卖出</text>
       </view>
       <view class="stat-item">
-        <text class="stat-num">1</text><text class="stat-label">求购</text>
+        <view class="stat-icon">⌕</view><text class="stat-num">-</text><text class="stat-label">求购</text>
       </view>
     </view>
 
-    <view class="profile-section" style="margin-top:20rpx">
-      <text style="font-weight:700;font-size:28rpx;display:block;margin-bottom:16rpx">交易</text>
+    <view class="profile-section">
+      <text class="section-label">交易</text>
       <view class="grid-2">
-        <view class="category-item" bindtap="goOrders">
+        <view class="category-item" bindtap="orders">
           <view class="cat-icon">B</view>
           <text>买入订单</text>
         </view>
@@ -42,9 +54,9 @@
       </view>
     </view>
 
-    <view class="profile-section" style="margin-top:20rpx">
-      <view class="row" style="margin-bottom:16rpx">
-        <text style="font-weight:700;font-size:28rpx">我的校园摊位</text>
+    <view class="profile-section">
+      <view class="row">
+        <text class="section-label">我的校园摊位</text>
         <button class="btn primary small" bindtap="goSeller">卖闲置</button>
       </view>
       <view class="grid-2">
@@ -59,8 +71,8 @@
       </view>
     </view>
 
-    <view class="profile-section" style="margin-top:20rpx">
-      <text style="font-weight:700;font-size:28rpx;display:block;margin-bottom:16rpx">工具</text>
+    <view class="profile-section">
+      <text class="section-label">工具</text>
       <view class="grid-2">
         <view class="category-item" bindtap="goFavorites">
           <view class="cat-icon">★</view>

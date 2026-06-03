@@ -1,0 +1,19 @@
+{
+  "name": "lee",
+  "version": "1.0.0",
+  "description": "本项目用于沉淀“二手校园小程序”相关的需求、讨论、设计与实现资料。",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "miniprogram-automator": "^0.12.1"
+  }
+}

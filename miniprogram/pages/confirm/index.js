@@ -3,18 +3,22 @@ const { request } = require('../../utils/api');
 
 Page({
   data: {
+    productId: null,
     productTitle: '九成新 Java 课程教材',
+    pickupLocation: '东区 3 栋 501',
     totalPrice: 28,
     remark: '',
-    orderId: null
+    receiverName: '李同学',
+    receiverPhone: '13800000000',
+    receiverAddress: '东区 3 栋 501'
   },
   onLoad(query) {
-    if (query.id) {
-      this.setData({ orderId: query.id });
-    }
-    if (query.price) {
-      this.setData({ totalPrice: Number(query.price) });
-    }
+    this.setData({
+      productId: query.productId ? Number(query.productId) : null,
+      productTitle: query.title ? decodeURIComponent(query.title) : this.data.productTitle,
+      pickupLocation: query.pickup ? decodeURIComponent(query.pickup) : this.data.pickupLocation,
+      totalPrice: query.price ? Number(query.price) : this.data.totalPrice
+    });
   },
   onRemark(e) { this.setData({ remark: e.detail.value }); },
   async submitOrder() {
@@ -22,19 +26,23 @@ Page({
       wx.navigateTo({ url: '/pages/login/index' });
       return;
     }
-    await request('/orders', {
+    if (!this.data.productId) {
+      wx.showToast({ title: '缺少商品信息', icon: 'none' });
+      return;
+    }
+    const order = await request('/orders/direct', {
       method: 'POST',
       data: {
         buyerId: app.globalData.user.userId,
-        productId: Number(this.data.orderId || 1),
+        productId: this.data.productId,
         quantity: 1,
-        receiverName: '李同学',
-        receiverPhone: '13800000000',
-        receiverAddress: '东区 3 栋 501'
+        receiverName: this.data.receiverName,
+        receiverPhone: this.data.receiverPhone,
+        receiverAddress: this.data.receiverAddress
       }
     });
-    wx.showToast({ title: '订单已提交' });
-    wx.navigateTo({ url: '/pages/orders/index' });
+    wx.showToast({ title: '待付款订单已生成' });
+    wx.navigateTo({ url: `/pages/order-detail/index?id=${order.id}` });
   },
   goAddress() { wx.navigateTo({ url: '/pages/address/index' }); }
 });

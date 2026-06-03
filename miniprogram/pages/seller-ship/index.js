@@ -8,9 +8,9 @@ Page({
   onPickupNote(e) { this.setData({ pickupNote: e.detail.value }); },
   onRemark(e) { this.setData({ remark: e.detail.value }); },
   async submitShip() {
-    await request(`/orders/${this.data.id}/ship?sellerId=${app.globalData.user.userId}`, {
-      method: 'POST',
-      data: { shippingMethod: 'PICKUP', pickupNote: this.data.pickupNote || '校内当面交接' }
+    await request(`/seller/orders/${this.data.id}/ship?sellerId=${app.globalData.user.userId}`, {
+      method: 'PUT',
+      data: { shipType: 'pickup', pickupRemark: this.data.pickupNote || '校内当面交接' }
     });
     wx.showToast({ title: '发货成功' });
     wx.navigateBack();

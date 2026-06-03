@@ -9,7 +9,7 @@ Page({
   },
   async load() {
     const product = await request(`/products/${this.data.id}`);
-    const canBuy = product.stock > 0 && product.status === 'ON_SALE';
+    const canBuy = product.status === 'approved';
     this.setData({
       product: {
         ...product,
@@ -27,41 +27,17 @@ Page({
     this.setData({ favorite: !this.data.favorite });
     wx.showToast({ title: this.data.favorite ? '已收藏' : '已取消收藏', icon: 'none' });
   },
-  async addCart() {
-    if (!this.requireLogin()) return;
-    await request('/cart/items', {
-      method: 'POST',
-      data: { userId: app.globalData.user.userId, productId: Number(this.data.id), quantity: 1 }
-    });
-    wx.showToast({ title: '已加入购物车' });
-  },
   async buyNow() {
     if (!this.requireLogin()) return;
-    await request('/orders', {
-      method: 'POST',
-      data: {
-        buyerId: app.globalData.user.userId,
-        productId: Number(this.data.id),
-        quantity: 1,
-        receiverName: '李同学',
-        receiverPhone: '13800000001',
-        receiverAddress: '北区 3 栋 502'
-      }
+    wx.navigateTo({
+      url: `/pages/confirm/index?productId=${this.data.id}&title=${encodeURIComponent(this.data.product.title)}&price=${this.data.product.price}&pickup=${encodeURIComponent(this.data.product.pickupLocation || '')}`
     });
-    wx.navigateTo({ url: '/pages/orders/index' });
   },
   async sendMessage() {
     if (!this.requireLogin()) return;
-    await request('/messages', {
-      method: 'POST',
-      data: {
-        senderId: app.globalData.user.userId,
-        receiverId: this.data.product.sellerId,
-        productId: Number(this.data.id),
-        content: '你好，这个商品还在吗？'
-      }
+    wx.navigateTo({
+      url: `/pages/chat/index?productId=${this.data.id}&sellerId=${this.data.product.sellerId}&productTitle=${encodeURIComponent(this.data.product.title)}&productPrice=${this.data.product.price}`
     });
-    wx.switchTab({ url: '/pages/messages/index' });
   },
   goWanted() { wx.switchTab({ url: '/pages/wanted/index' }); }
 });

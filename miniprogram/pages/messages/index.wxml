@@ -1,24 +1,24 @@
-<view class="page" style="padding:0">
-  <view class="section-title" style="padding:24rpx 24rpx 0">
+<view class="page page-enter messages-page">
+  <view class="section-title">
     <view>
-      <text style="font-size:32rpx;font-weight:700">消息</text>
+      <text class="section-label">消息</text>
       <text class="muted">长按会话可置顶或删除</text>
     </view>
   </view>
   <block wx:for="{{messages}}" wx:key="id">
-    <view class="message-row" bindtap="openChat" data-id="{{item.id}}">
+    <view class="message-row" bindtap="openChat" bindlongpress="showActions" data-id="{{item.conversationId}}">
       <view class="message-avatar">{{item.senderNickname ? item.senderNickname[0] : '同'}}</view>
       <view class="message-main">
         <view class="message-line">
-          <text class="msg-name">会话 #{{item.id}}</text>
+          <text class="msg-name">{{item.title || '校园会话'}}</text>
           <text class="msg-time">{{item.sentAt || '最近'}}</text>
         </view>
         <view class="message-preview">{{item.content}}</view>
-        <text wx:if="{{item.status === 'UNREAD'}}" class="message-unread">未读</text>
+        <text wx:if="{{item.readStatus === 'unread'}}" class="message-unread">未读</text>
       </view>
     </view>
   </block>
-  <view wx:if="{{messages.length === 0}}" class="empty-state" style="margin:24rpx">
+  <view wx:if="{{messages.length === 0}}" class="empty-state">
     <view class="empty-icon">M</view>
     <text class="empty-title">暂无咨询消息</text>
     <text class="empty-desc">商品详情页里联系卖家后可在这里继续对话。</text>

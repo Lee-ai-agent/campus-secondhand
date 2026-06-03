@@ -11,7 +11,8 @@ Page({
   },
   goBack() { wx.navigateBack(); },
   contactUser() {
-    wx.showToast({ title: '已打开聊天', icon: 'none' });
-    wx.switchTab({ url: '/pages/messages/index' });
+    wx.navigateTo({
+      url: `/pages/chat/index?sellerId=${this.data.wanted.userId || 3}&productTitle=${encodeURIComponent(this.data.wanted.title)}&productPrice=${this.data.wanted.maxPrice || 0}`
+    });
   }
 });

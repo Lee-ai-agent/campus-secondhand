@@ -14,10 +14,10 @@
       <view style="flex:1;min-width:0">
         <view class="row">
           <text style="font-weight:700;font-size:28rpx">{{item.title}}</text>
-          <text class="badge {{item.audit === '待审核' ? 'warn' : 'success'}}">{{item.audit || '审核通过'}}</text>
+          <text class="badge {{item.status === 'pending' ? 'warn' : item.status === 'rejected' ? 'danger' : 'success'}}">{{item.status === 'pending' ? '待审核' : item.status === 'approved' ? '已上架' : item.status === 'rejected' ? '审核不通过' : item.status === 'offline' ? '已下架' : item.status}}</text>
         </view>
-        <text class="muted">价格 ¥{{item.price}} · 库存 {{item.stock}}</text>
-        <text class="muted">{{item.audit === '待审核' ? '图片不清晰，可编辑后重新提交。' : '审核通过，可被其他用户搜索购买。'}}</text>
+        <text class="muted">价格 ¥{{item.price}}</text>
+        <text class="muted">{{item.auditReason || (item.status === 'pending' ? '管理员审核后才会公开展示。' : '状态变化后会同步到商品列表。')}}</text>
         <view class="order-actions">
           <button class="btn primary small" bindtap="editPost" data-id="{{item.id}}">编辑</button>
         </view>

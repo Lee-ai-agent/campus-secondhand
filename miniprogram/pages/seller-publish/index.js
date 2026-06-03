@@ -3,18 +3,21 @@ const { request } = require('../../utils/api');
 
 Page({
   data: {
-    title: '', price: '32', stock: '2', categoryId: 3, conditionLevel: '九成新',
+    title: '', price: '32', categoryId: 3, conditionLevel: '九成新',
     description: '', pickupLocation: '', images: []
   },
   onTitle(e) { this.setData({ title: e.detail.value }); },
   onPrice(e) { this.setData({ price: e.detail.value }); },
-  onStock(e) { this.setData({ stock: e.detail.value }); },
   onDesc(e) { this.setData({ description: e.detail.value }); },
   onPickup(e) { this.setData({ pickupLocation: e.detail.value }); },
   setCategory(e) { this.setData({ categoryId: Number(e.currentTarget.dataset.id) }); },
   setCondition(e) { this.setData({ conditionLevel: e.currentTarget.dataset.value }); },
   async submit() {
-    await request('/products', {
+    if (!this.data.title.trim()) { wx.showToast({ title: '请输入标题', icon: 'none' }); return; }
+    if (!this.data.price || Number(this.data.price) <= 0) { wx.showToast({ title: '请输入有效价格', icon: 'none' }); return; }
+    if (!this.data.description.trim()) { wx.showToast({ title: '请输入描述', icon: 'none' }); return; }
+    if (!this.data.pickupLocation.trim()) { wx.showToast({ title: '请输入取货地点', icon: 'none' }); return; }
+    await request('/seller/products', {
       method: 'POST',
       data: {
         sellerId: app.globalData.user.userId,
@@ -22,7 +25,6 @@ Page({
         title: this.data.title,
         description: this.data.description,
         price: Number(this.data.price),
-        stock: Number(this.data.stock),
         conditionLevel: this.data.conditionLevel,
         pickupLocation: this.data.pickupLocation,
         images: this.data.images

@@ -31,10 +31,6 @@
         <text class="field-label">价格</text>
         <input class="input" type="digit" value="{{price}}" bindinput="onPrice" />
       </view>
-      <view class="field" style="flex:1">
-        <text class="field-label">库存</text>
-        <input class="input" type="number" value="{{stock}}" bindinput="onStock" />
-      </view>
     </view>
 
     <view class="choice-field">

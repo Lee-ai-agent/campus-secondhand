@@ -10,6 +10,11 @@ Page({
   setCondition(e) { this.setData({ conditionLevel: e.currentTarget.dataset.value }); },
   async submit() {
     if (!app.hasSession()) { wx.navigateTo({ url: '/pages/login/index' }); return; }
+    if (!this.data.title.trim()) { wx.showToast({ title: '请输入求购名称', icon: 'none' }); return; }
+    if (!this.data.minPrice || Number(this.data.minPrice) <= 0) { wx.showToast({ title: '请输入有效最低价', icon: 'none' }); return; }
+    if (!this.data.maxPrice || Number(this.data.maxPrice) <= 0) { wx.showToast({ title: '请输入有效最高价', icon: 'none' }); return; }
+    if (Number(this.data.minPrice) > Number(this.data.maxPrice)) { wx.showToast({ title: '最低价不能高于最高价', icon: 'none' }); return; }
+    if (!this.data.description.trim()) { wx.showToast({ title: '请输入描述', icon: 'none' }); return; }
     await request('/wanted', {
       method: 'POST',
       data: {

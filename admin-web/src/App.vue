@@ -18,7 +18,7 @@
       <!-- Login -->
       <section v-if="!token" class="login-panel">
         <h1>管理员登录</h1>
-        <p>使用 admin / admin123 登录后台，完成商品审核和答辩演示。</p>
+        <p>使用 admin / admin123 登录后台，完成商品审核、订单和运营管理。</p>
         <input v-model="loginForm.username" placeholder="账号" style="width:100%;padding:12px;border:1px solid var(--admin-line);border-radius:6px;font-size:14px" />
         <input v-model="loginForm.password" type="password" placeholder="密码" style="width:100%;padding:12px;border:1px solid var(--admin-line);border-radius:6px;font-size:14px" />
         <button class="btn-custom primary" @click="login" style="width:100%;padding:14px;border:0;border-radius:6px;background:var(--admin-green);color:#fff;font-weight:800;font-size:16px;cursor:pointer">登录</button>
@@ -79,7 +79,6 @@
               </template>
             </el-table-column>
           </el-table>
-          <div class="admin-card" style="margin-top:14px"><strong>验收状态</strong><p style="color:var(--admin-muted);font-size:13px">支持筛选、查看、状态处理、空状态和异常提示。驳回商品必须填写原因。</p></div>
         </section>
 
         <!-- Users -->
@@ -98,13 +97,13 @@
             <el-table-column prop="role" label="角色" />
             <el-table-column prop="status" label="状态">
               <template #default="{ row }">
-                <span :style="{ color: row.status === 'DISABLED' ? '#c84848' : '#16875d', fontWeight: 700 }">{{ row.status === 'DISABLED' ? '禁用' : '正常' }}</span>
+                <span :style="{ color: row.status === 'disabled' ? '#c84848' : '#16875d', fontWeight: 700 }">{{ row.status === 'disabled' ? '禁用' : '正常' }}</span>
               </template>
             </el-table-column>
             <el-table-column label="操作" width="160">
               <template #default="{ row }">
                 <el-button size="small">查看</el-button>
-                <el-button :type="row.status === 'DISABLED' ? 'success' : 'danger'" size="small">{{ row.status === 'DISABLED' ? '解禁' : '禁用' }}</el-button>
+                <el-button :type="row.status === 'disabled' ? 'success' : 'danger'" size="small">{{ row.status === 'disabled' ? '解禁' : '禁用' }}</el-button>
               </template>
             </el-table-column>
           </el-table>
@@ -249,7 +248,6 @@
             <div class="admin-card"><strong>近 7 天订单趋势</strong><div class="bars"><div class="bar" v-for="d in chartData" :key="d.label"><span>{{ d.label }}</span><div class="bar-fill" :style="{ width: d.pct + '%' }"></div><b>{{ d.val }}</b></div></div></div>
             <div class="admin-card"><strong>热门分类</strong><div class="bars"><div class="bar" v-for="c in hotCats" :key="c.name"><span>{{ c.name }}</span><div class="bar-fill" :style="{ width: c.pct + '%' }"></div><b>{{ c.pct }}%</b></div></div></div>
           </div>
-          <div class="admin-card" style="margin-top:14px"><strong>空状态</strong><p style="color:var(--admin-muted);font-size:13px">无数据时统计卡片展示 0，图表区域展示暂无数据。</p></div>
         </section>
       </template>
     </main>
@@ -338,7 +336,7 @@ function logout() {
   localStorage.removeItem('adminToken');
 }
 
-async function loadDashboard() { dashboard.value = await api('/admin/dashboard'); }
+async function loadDashboard() { dashboard.value = await api('/admin/statistics'); }
 async function loadPending() { pendingProducts.value = await api('/admin/products/pending'); }
 async function loadUsers() { users.value = await api('/admin/users'); }
 async function loadOrders() { orders.value = await api('/admin/orders'); }
@@ -348,12 +346,12 @@ async function loadWanted() { wantedPosts.value = await api('/wanted'); }
 async function loadMessages() { allMessages.value = await api('/admin/messages'); }
 
 async function approve(id) {
-  await api(`/admin/products/${id}/approve`, { method: 'POST' });
+  await api(`/admin/products/${id}/audit`, { method: 'POST', body: { action: 'approve' } });
   ElMessage.success('已通过');
   await loadPending(); await loadDashboard();
 }
 async function reject(id) {
-  await api(`/admin/products/${id}/reject`, { method: 'POST', body: { reason: '信息不完整，请补充图片和描述' } });
+  await api(`/admin/products/${id}/audit`, { method: 'POST', body: { action: 'reject', reason: '信息不完整，请补充图片和描述' } });
   ElMessage.success('已驳回');
   await loadPending(); await loadDashboard();
 }

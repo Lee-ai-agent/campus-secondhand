@@ -5,11 +5,13 @@ Page({
   data: {
     orders: [],
     statusText: {
-      PENDING_PAYMENT: '待付款',
-      PENDING_SHIPMENT: '待发货',
-      PENDING_RECEIPT: '待收货',
-      COMPLETED: '已完成',
-      CANCELLED: '已取消'
+      pending_payment: '待付款',
+      pending_shipment: '待发货',
+      pending_receipt: '待收货',
+      completed: '已完成',
+      cancelled: '已取消',
+      after_sale: '售后中',
+      refunded: '退款完成'
     }
   },
   onShow() {
@@ -23,11 +25,11 @@ Page({
     this.setData({ orders: await request(`/orders?buyerId=${app.globalData.user.userId}`) });
   },
   async pay(e) {
-    await request(`/orders/${e.currentTarget.dataset.id}/pay?buyerId=${app.globalData.user.userId}`, { method: 'POST' });
+    await request(`/orders/${e.currentTarget.dataset.id}/pay?buyerId=${app.globalData.user.userId}`, { method: 'PUT' });
     this.load();
   },
   async receive(e) {
-    await request(`/orders/${e.currentTarget.dataset.id}/receive?buyerId=${app.globalData.user.userId}`, { method: 'POST' });
+    await request(`/orders/${e.currentTarget.dataset.id}/confirm?buyerId=${app.globalData.user.userId}`, { method: 'PUT' });
     this.load();
   },
   viewDetail(e) {

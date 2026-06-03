@@ -1,20 +1,40 @@
-<view class="chat-page" wx:if="{{messages}}">
+<view class="chat-shell page-enter" wx:if="{{messages}}">
+  <view wx:if="{{productId}}" class="chat-product-card" bindtap="goDetail">
+    <view class="chat-product-img">{{productTitle ? productTitle[0] : '商'}}</view>
+    <view class="action-grow">
+      <text class="section-label">{{productTitle || '商品'}}</text>
+      <text class="price">¥{{productPrice}}</text>
+    </view>
+    <button class="btn primary chat-buy-action" bindtap="createPendingOrder" catchtap>生成订单</button>
+  </view>
+
+  <view wx:if="{{pendingOrder}}" class="chat-product-card">
+    <view class="action-grow">
+      <text class="section-label">待付款订单</text>
+      <text class="price">¥{{pendingOrder.totalAmount}}</text>
+      <text class="muted">{{pendingOrder.status === 'pending_payment' ? '待付款' : '已付款 / 待发货'}}</text>
+    </view>
+    <button wx:if="{{pendingOrder.status === 'pending_payment'}}" class="btn primary chat-buy-action" bindtap="payPendingOrder">去付款</button>
+  </view>
+
   <view class="chat-card">
-    <view class="message-avatar" style="width:72rpx;height:72rpx;font-size:28rpx">同</view>
-    <view style="flex:1">
-      <text style="font-weight:700;font-size:28rpx;display:block">{{contactName || '林同学'}}</text>
+    <view class="message-avatar">{{contactName ? contactName[0] : '同'}}</view>
+    <view class="action-grow">
+      <text class="section-label">{{contactName || '同学'}}</text>
       <text class="muted">商品咨询 · 在线</text>
     </view>
   </view>
 
   <view class="chat-thread">
-    <text class="chat-time">2026-05-31 16:02</text>
+    <text class="chat-time">最近消息</text>
     <block wx:for="{{messages}}" wx:key="id">
-      <view class="chat-bubble {{item.senderId === myId ? 'outgoing' : 'incoming'}}">{{item.content}}</view>
+      <view class="chat-bubble {{item.senderId === myId ? 'outgoing mine' : 'incoming other'}}">{{item.content}}</view>
     </block>
   </view>
 
-  <view class="chat-compose">
+  <view class="chat-input-bar">
+    <button class="compose-btn" bindtap="showEmoji">😊</button>
     <input value="{{draft}}" bindinput="onDraft" placeholder="输入消息…" confirm-type="send" bindconfirm="sendMessage" />
+    <button class="compose-btn" bindtap="showAttachment">+</button>
   </view>
 </view>

@@ -9,15 +9,15 @@
     <view class="order-card">
       <view class="order-row">
         <text style="font-weight:700;font-size:30rpx">{{item.orderNo || ('SO' + item.id)}}</text>
-        <text class="badge {{item.status === 'PENDING_PAYMENT' ? 'warn' : item.status === 'COMPLETED' ? 'success' : 'blue'}}">{{statusText[item.status] || item.status}}</text>
+        <text class="badge {{item.status === 'pending_payment' ? 'warn' : item.status === 'completed' ? 'success' : 'blue'}}">{{statusText[item.status] || item.status}}</text>
       </view>
       <text class="muted">商品 #{{item.productId}} · 数量 {{item.quantity}}</text>
       <view class="order-row">
         <text class="price" style="font-size:32rpx">¥{{item.totalAmount}}</text>
       </view>
       <view class="order-actions">
-        <view wx:if="{{item.status === 'PENDING_PAYMENT'}}" class="btn primary small" bindtap="pay" data-id="{{item.id}}">去付款</view>
-        <view wx:if="{{item.status === 'PENDING_RECEIPT'}}" class="btn primary small" bindtap="receive" data-id="{{item.id}}">确认收货</view>
+        <view wx:if="{{item.status === 'pending_payment'}}" class="btn primary small" bindtap="pay" data-id="{{item.id}}">去付款</view>
+        <view wx:if="{{item.status === 'pending_receipt'}}" class="btn primary small" bindtap="receive" data-id="{{item.id}}">确认收货</view>
         <view class="btn small" bindtap="viewDetail" data-id="{{item.id}}">查看详情</view>
       </view>
     </view>

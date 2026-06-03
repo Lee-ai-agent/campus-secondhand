@@ -1,11 +1,11 @@
-<view class="page stack">
+<view class="page stack page-enter login-page">
   <view class="banner">
     <view class="banner-kicker">校园二手交易</view>
-    <h3>欢迎回来</h3>
-    <p>学生认证后可下单、收藏、发布求购。</p>
+    <text class="banner-title">欢迎回来</text>
+    <text class="banner-desc">学生认证后可下单、收藏、发布求购。</text>
   </view>
 
-  <view class="form-card">
+  <view class="login-card">
     <view class="field">
       <text class="field-label">手机号/账号</text>
       <input class="input" placeholder="student01" value="{{username}}" bindinput="onUsername" />
@@ -14,8 +14,8 @@
       <text class="field-label">验证码或密码</text>
       <input class="input" placeholder="123456" password value="{{password}}" bindinput="onPassword" />
     </view>
-    <button class="btn primary" style="width:100%" bindtap="login">登录</button>
-    <button class="btn ghost" style="width:100%" bindtap="register">注册</button>
-    <button class="btn" style="width:100%; background:transparent; border:0; color:var(--text-muted)" bindtap="guestBrowse">游客浏览</button>
+    <button class="btn primary login-action" bindtap="login">登录</button>
+    <button class="btn ghost login-action" bindtap="register">注册</button>
+    <button class="btn ghost login-action" bindtap="guestBrowse">游客浏览</button>
   </view>
 </view>

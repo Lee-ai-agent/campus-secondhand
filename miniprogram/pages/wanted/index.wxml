@@ -1,8 +1,14 @@
-<view class="page stack">
+<view class="page stack page-enter wanted-page">
   <view class="wanted-hero">
-    <text class="badge blue" style="margin-bottom:16rpx">求购专区</text>
-    <text style="display:block;font-size:34rpx;font-weight:700;letter-spacing:-0.3rpx">同学们正在找</text>
-    <text class="muted">看到你有的物品，直接联系对方。</text>
+    <view class="chalk-board">
+      <view class="tape tape-left"></view>
+      <view class="paper-note">校园二手</view>
+      <text class="wanted-hero-title">求购专区</text>
+      <text class="wanted-hero-sub">同学们正在找</text>
+      <view class="chalk-icon">⌕</view>
+      <view class="chalk-line line-a"></view>
+      <view class="chalk-line line-b"></view>
+    </view>
   </view>
 
   <view class="filter-row">
@@ -22,13 +28,19 @@
 
   <block wx:for="{{posts}}" wx:key="id">
     <view class="wanted-card" bindtap="viewDetail" data-id="{{item.id}}">
-      <text class="badge blue">{{item.status || '展示中'}}</text>
-      <text style="display:block;margin-top:14rpx;font-size:30rpx;font-weight:700">{{item.title}}</text>
-      <text class="muted">{{item.description}}</text>
-      <view class="wanted-meta-row">
-        <text class="wanted-meta-tag">{{item.userNickname || '同学'}}</text>
-        <text class="wanted-meta-tag">预算 ¥{{item.minPrice}}-{{item.maxPrice}}</text>
-        <text class="wanted-meta-tag">{{item.conditionLevel}}</text>
+      <view class="card-tape"></view>
+      <view class="wanted-thumb">求</view>
+      <view class="wanted-main">
+        <view class="row">
+          <text class="wanted-title">{{item.title}}</text>
+          <text class="badge success">{{item.conditionLevel}}</text>
+        </view>
+        <text class="wanted-budget">预算 ¥{{item.minPrice}}-{{item.maxPrice}}</text>
+        <text class="muted">{{item.description}}</text>
+        <view class="wanted-meta-row">
+          <text class="wanted-meta-tag">{{item.userNickname || '同学'}}</text>
+          <text class="wanted-meta-tag">{{item.status || '寻找中'}}</text>
+        </view>
       </view>
     </view>
   </block>
@@ -41,7 +53,7 @@
   </view>
 
   <view class="floating-action" bindtap="goPublish">
-    <text style="font-size:32rpx;margin-right:4rpx">+</text>
+    <text>+</text>
     <text>发求购</text>
   </view>
 </view>
