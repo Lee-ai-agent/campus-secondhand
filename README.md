@@ -8,9 +8,6 @@
 - `miniprogram`：原生微信小程序工程，覆盖买家、卖家和求购/消息核心页面。
 - `admin-web`：Vue3 + Element Plus 管理后台，覆盖登录、仪表盘、商品审核、用户管理和订单管理。
 - `database`：MySQL 建表脚本和演示数据脚本。
-- `docs/second-hand-campus-miniprogram/delivery`：数据库设计、接口设计、状态机、测试用例、运行手册和验收清单。
-- `docs/second-hand-campus-miniprogram/thesis`：毕业论文提纲和初稿。
-- `docs/second-hand-campus-miniprogram/defense`：答辩演示脚本和 PPT 大纲。
 
 ## 快速启动
 
