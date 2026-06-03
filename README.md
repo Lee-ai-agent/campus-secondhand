@@ -35,21 +35,3 @@ npm run dev
 | 管理员 | `admin` | `admin123` |
 | 买家 | `student01` | `123456` |
 | 卖家 | `seller01` | `123456` |
-
-## 文档
-
-- [对话归档](docs/second-hand-campus-miniprogram/conversation.md)
-- [项目概要](docs/second-hand-campus-miniprogram/overview.md)
-- [PRD 原文归档](docs/second-hand-campus-miniprogram/prd.md)
-- [PRD 摘要](docs/second-hand-campus-miniprogram/prd-summary.md)
-- [原型生成需求](docs/second-hand-campus-miniprogram/prototype-requirements.md)
-- [PRD 评审报告](docs/second-hand-campus-miniprogram/校园二手物品交易小程序-需求评审报告2026-05-29.md)
-- [数据库设计](docs/second-hand-campus-miniprogram/delivery/database-design.md)
-- [接口设计](docs/second-hand-campus-miniprogram/delivery/api-design.md)
-- [状态机](docs/second-hand-campus-miniprogram/delivery/state-machines.md)
-- [运行手册](docs/second-hand-campus-miniprogram/delivery/runbook.md)
-- [测试用例](docs/second-hand-campus-miniprogram/delivery/test-cases.md)
-- [论文初稿](docs/second-hand-campus-miniprogram/thesis/thesis-draft.md)
-- [答辩演示脚本](docs/second-hand-campus-miniprogram/defense/demo-script.md)
-- [线程归档：019e6372](docs/second-hand-campus-miniprogram/threads/019e6372-6d72-7213-8120-c9e54a91b3c0.md)
-- [线程归档：019e681c](docs/second-hand-campus-miniprogram/threads/019e681c-2a80-78d1-9a9f-b045618b785d.md)
